@@ -26,6 +26,15 @@ Put the static address in the `hosts` file.
 
 Make sure you have backup copies of these files. You need to use `sudo` for this step.
 
+Restart the PI. Note - do not use `ifconfig <interface> down` if you are logged in via ssh. If you are using the console, user
+
 ```bash
-sudo service network-manager restart
+ifconfig <interface> down
+ifconfig <interface> up
+```
+
+Otherwise, just use
+
+```bash
+sudo shutdown -r now
 ```

@@ -11,17 +11,18 @@
 #
 # By default this script does nothing.
 
+# static ip address in a file called local
+if [ -f local ]
+then
+    source local
+else
+    echo "Can't find file local."
+fi
+
 # Print the IP address
 _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
-
-# static ip address
-interface=
-address=
-netmask=
-broadcast=
-gateway=
 
 exit 0
