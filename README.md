@@ -45,6 +45,72 @@ This will close your ssh connection and restart the PI.
 
 Install `tcpdump`.
 
-# Check the Memory Available
+# Changes to /etc/sysctl.conf
 
-The physical memory may be split between the CPU and GPU. You may modify this. I'm modifying it because this PI 2 doesn't have a desktop installed, and I use ssh to administer it.
+I made the following changes
+
+- Spoof protection
+
+```
+net.ipv4.conf.default.rp_filter=1
+net.ipv4.conf.all.rp_filter=1
+```
+
+- TCP/IP SYN cookies
+
+```
+net.ipv4.tcp_syncookies=1
+```
+
+- Ignore ICMP broadcasts
+
+```
+net.ipv4.icmp_echo_ignore_broadcasts=1
+```
+
+- Ignore bogus ICMP errors
+
+```
+net.ipv4.icmp_ignore_bogus_error_responses=1
+```
+
+- Do not accept ICMP redirects (put your own interface name for `eth0`)
+
+```
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.eth0.accept_redirects = 0
+```
+
+- Do not send ICMP redirects
+
+```
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.eth0.send_redirects = 0
+```
+
+- Do not accept IP source route packets
+
+```
+net.ipv4.conf.all.accept_source_route = 0
+```
+
+- Log (https://en.wikipedia.org/wiki/Martian_packet)[Martian Packets]
+
+```
+net.ipv4.conf.all.log_martians = 1
+```
+
+- Router functionality
+
+```
+net.ipv4.ip_forward = 1
+```
+
+- Minimum free kb
+
+```
+vm.min_free_kbytes=8192
+```
+
+Make sure you use your own interface name for `eth0`. Apply changes using `sudo sysctl -p`.
