@@ -17,4 +17,11 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
+# static ip address
+interface=
+address=
+netmask=
+broadcast=
+gateway=
+
 exit 0

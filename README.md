@@ -16,4 +16,16 @@ I got a 3 A power supply for the PI 3B+ and it works just fine. Someone gave me 
 
 ## Use /etc/rc.local on Ubuntu and Raspbian
 
-We have to use `/etc/rc.local` here.
+We have to use `/etc/rc.local`. Edit the file in the `etc` directory and change the interface, address, netmask, broadcast address, and gateway for your router. I'm using a box provided by my cable company, so I logged into the device and got this information. I also set the PI 2 so it has a static IP address. Go ahead and do this now.
+
+## Edit /etc/hosts
+
+Put the static address in the `hosts` file.
+
+## Copy rc.local and hosts to /etc
+
+Make sure you have backup copies of these files. You need to use `sudo` for this step.
+
+```bash
+sudo service network-manager restart
+```
