@@ -1,0 +1,6 @@
+# static ip address
+export interface=
+export address=
+export netmask=
+export broadcast=
+export gateway=
