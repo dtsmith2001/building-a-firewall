@@ -45,7 +45,7 @@ This will close your ssh connection and restart the PI.
 
 Install `tcpdump`.
 
-# Changes to /etc/sysctl.conf
+# Changes to /etc/sysctl.conf to Harden the System
 
 I made the following changes
 
@@ -114,3 +114,7 @@ vm.min_free_kbytes=8192
 ```
 
 Make sure you use your own interface name for `eth0`. Apply changes using `sudo sysctl -p`.
+
+# Set up DHCP and DNS
+
+Having a DNS cache server on the PI 2 will speed up DNS queries, as they will be cached locally in the house. We will deny incomplete or bad DNS requests, which increases security.
