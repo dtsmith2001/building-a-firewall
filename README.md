@@ -24,9 +24,9 @@ Put the static address in the `hosts` file.
 
 ## Copy rc.local and hosts to /etc
 
-Make sure you have backup copies of these files. You need to use `sudo` for this step.
+Make sure you have backup copies of these files. You need to use `sudo` for this step to copy everything in the `etc` directory to `/etc`. I did not keep my IP address or other networking information in GitHub. I edited manually and then did a `git checkout -- <file>`.
 
-Restart the PI. Note - do not use `ifconfig <interface> down` if you are logged in via ssh. If you are using the console, user
+Restart the PI. Note - do not use `ifconfig <interface> down` if you are logged in via ssh. If you are using the console, use
 
 ```bash
 ifconfig <interface> down
@@ -38,3 +38,13 @@ Otherwise, just use
 ```bash
 sudo shutdown -r now
 ```
+
+This will close your ssh connection and restart the PI.
+
+# Package Installation
+
+Install `tcpdump`.
+
+# Check the Memory Available
+
+The physical memory may be split between the CPU and GPU. You may modify this. I'm modifying it because this PI 2 doesn't have a desktop installed, and I use ssh to administer it.
