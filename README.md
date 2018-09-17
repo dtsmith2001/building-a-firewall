@@ -117,4 +117,17 @@ Make sure you use your own interface name for `eth0`. Apply changes using `sudo 
 
 # Set up DHCP and DNS
 
-Having a DNS cache server on the PI 2 will speed up DNS queries, as they will be cached locally in the house. We will deny incomplete or bad DNS requests, which increases security.
+Having a DNS cache server on the PI 2 will speed up DNS queries, as they will be cached locally in the house. We will deny incomplete or bad DNS requests, which increases security. Install the package `dnsmasq`.
+
+Here's how I configured it (following the original article).
+
+```
+interface=eth0
+listen-address=<my_ip_address>
+bind-interfaces
+domain-needed
+dns-forward-max=150
+cache-size=300
+dhcp-range=192.168.55.1,192.168.55.254,255.255.255.0,10d
+dhcp-authoritative
+```
