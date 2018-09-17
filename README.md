@@ -128,6 +128,8 @@ bind-interfaces
 domain-needed
 dns-forward-max=150
 cache-size=300
-dhcp-range=192.168.55.1,192.168.55.254,255.255.255.0,10d
-dhcp-authoritative
 ```
+
+I turned off DHCP since I have a mesh routing system, and I can't turn off DHCP in that system.
+
+Also, I tried to use tcpdump to see if DNS was being handled properly. `dig` reports the correct DNS address - the PI 2 - from my iMac, but no packet information is displayed.
