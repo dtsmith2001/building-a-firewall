@@ -1,0 +1,6 @@
+# static ip address
+export interface=enxb827ebfc6b8c
+export address=10.0.0.31
+export netmask=255.255.255.0
+export broadcast=10.0.0.255
+export gateway=10.0.0.1
